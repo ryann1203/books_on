@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Search</title>
+    <link rel="stylesheet" href="../css/BookSearch.css">
 </head>
 <body>
-    <h1>Book Search</h1>
-    <input type="text" id="bookQuery" placeholder="책 이름을 입력하세요" />
-    <button onclick="searchBooks()">검색</button>
-    <div id="result"></div>
+    <header>
+        <h1>책 검색 페이지</h1>
+        <button id="logout-button">로그아웃</button>
+    </header>
+    <main>
+        <div id="search-container">
+            <input type="text" id="bookQuery" placeholder="책 이름을 입력하세요" />
+            <button id="search-button" onclick="searchBooks()">검색</button>
+        </div>
+        <div id="result"></div>
+    </main>
 
     <!-- JavaScript 파일 연결 -->
     <script src="../Js/BookSearch.js"></script>
