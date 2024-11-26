@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독서기록장 작성</title>
+    <link rel="stylesheet" href="../css/ReadingLog.css">
+</head>
+<body>
+    <header>
+        <h1>독서기록장 작성하기</h1>
+        <button id="back-button" onclick="goBack()">←</button>
+    </header>
+    <main>
+        <section id="book-info">
+            <img id="book-cover" src="" alt="책 표지">
+            <div>
+                <h2 id="book-title">책 제목</h2>
+                <p id="book-author">저자: </p>
+                <p id="book-publisher">출판사: </p>
+                <p id="book-date">출판일: </p>
+                <button id="detail-button" onclick="showDetails()">상세내용</button>
+            </div>
+        </section>
+        <textarea id="diary" placeholder="당신의 한 줄 리뷰를 남겨주세요!"></textarea>
+        <button id="save-button">저장하기</button>
+    </main>
+    <script src="../Js/ReadingLog.js"></script>
+</body>
+</html>

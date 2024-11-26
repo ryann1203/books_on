@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'Readinglog',
 
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
@@ -136,11 +137,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_AUTH = {
     'USE_JWT' : True,
-    'JWT_AUTH_HTTPONLY': True,
-    'JWT_AUTH_COOKIE': "refresh_token",
-    'JWT_AUTH_REFRESH_COOKIE': "refresh_token",
-    'JWT_AUTH_COOKIE_USE_CSRF': True,
-    'SESSION_LOGIN': False
+    # 'JWT_AUTH_HTTPONLY': True,
+    # 'JWT_AUTH_COOKIE': "access_token",
+    # 'JWT_AUTH_REFRESH_COOKIE': "refresh_token",
+    # 'JWT_AUTH_COOKIE_USE_CSRF': True,
+    # 'SESSION_LOGIN': False
 }
 
 REST_FRAMEWORK = {
@@ -171,7 +172,7 @@ CORS_ALLOWED_ORIGINS = [
  # 로컬 개발용 주소
 'http://localhost:3000',
 'http://localhost:5173',
-'http://localhost:5173',
+'http://localhost:5500',
 
 'http://127.0.0.1:3000',
 'http://127.0.0.1:5173',
@@ -180,4 +181,14 @@ CORS_ALLOWED_ORIGINS = [
 # 예를 들어, 아래와 같이 입력.
 'http://프론트엔드주소',
 'http://프론트주소:포트번호',
+]
+
+# CSRF 설정
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:5500',  # 프론트엔드 URL
+    'http://localhost:5500',  # 추가적인 로컬 URL
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:5173',
 ]

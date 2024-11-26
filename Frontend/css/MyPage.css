@@ -14,38 +14,42 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.search-container {
+.container {
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.logs-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.search-container input {
-    width: 70%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
+.log-card {
+    width: calc(10% - 20px);
+    background-color: white;
     border-radius: 5px;
-}
-
-.search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-left: 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     cursor: pointer;
+    text-align: center;
 }
 
-.search-container button:hover {
-    background-color: #0056b3;
+.log-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-.result-container {
-    padding: 20px;
+.log-card p {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #555;
 }
 
 .bottom-nav {
@@ -53,12 +57,11 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #f8f9fa;
+    background-color: #fff;
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    z-index: 1000;
 }
 
 .bottom-nav button {
@@ -69,7 +72,7 @@ body {
     cursor: pointer;
 }
 
-.bottom-nav button:hover {
+.bottom-nav button:focus {
+    outline: none;
     color: #007bff;
 }
-

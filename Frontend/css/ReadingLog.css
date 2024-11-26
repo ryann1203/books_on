@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #444;
+}
+
+#book-info {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+#book-cover {
+    width: 120px;
+    height: auto;
+}
+
+#book-info div {
+    flex: 1;
+}
+
+#book-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#diary {
+    width: calc(100% - 40px);
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 150px;
+    display: block;
+}
+
+#save-button {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 0 auto 20px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#save-button:hover {
+    background-color: #FFC107;
+}

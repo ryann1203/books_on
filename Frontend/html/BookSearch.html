@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Search</title>
+    <title>책 검색</title>
     <link rel="stylesheet" href="../css/BookSearch.css">
 </head>
 <body>
-    <header>
-        <h1>책 검색 페이지</h1>
-        <button id="logout-button">로그아웃</button>
-    </header>
-    <main>
-        <div id="search-container">
-            <input type="text" id="bookQuery" placeholder="책 이름을 입력하세요" />
-            <button id="search-button" onclick="searchBooks()">검색</button>
-        </div>
-        <div id="result"></div>
-    </main>
+    <div class="header">
+        <h1>책 검색</h1>
+    </div>
 
-    <!-- JavaScript 파일 연결 -->
+    <div class="search-container">
+        <input type="text" id="bookQuery" placeholder="검색어를 입력하세요">
+        <button onclick="searchBooks()">검색</button>
+    </div>
+
+    <div id="result" class="result-container">
+        <!-- 검색 결과가 표시됩니다 -->
+    </div>
+
     <script src="../Js/BookSearch.js"></script>
+    <script src="../Js/navbar.js"></script>
+
 </body>
 </html>
