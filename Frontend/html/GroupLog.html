@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Log</title>
+    <link rel="stylesheet" href="../css/GroupLog.css">
+</head>
+<body>
+    <div class="header">
+        <h1 id="group-name">그룹 이름</h1>
+    </div>
+    <div class="container">
+        <div class="book-info">
+            <img id="book-cover" src="" alt="책 표지" />
+            <h2 id="book-title">책 제목</h2>
+            <p id="book-author">저자</p>
+        </div>
+        <div class="group-info">
+            <p id="group-created-at"></p>
+            <p id="group-members">그룹 멤버</p>
+        </div>
+    </div>
+    <div class="post-section">
+        <textarea id="post-content" placeholder="책에 대한 생각을 남겨보세요..."></textarea>
+        <button id="submit-post">작성</button>
+        <div id="post-list"></div>
+    </div>
+    <script src="../Js/GroupLog.js"></script>
+    <script src="../Js/navbar.js"></script> 
+</body>
+</html>
+

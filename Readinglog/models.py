@@ -9,6 +9,7 @@ class Book(models.Model):
     publication_date = models.DateField()
     thumbnail = models.URLField()
     contents = models.TextField()
+    isbn = models.CharField(max_length=30, null=True) 
 
     def __str__(self):
         return f"{self.title} by {self.authors}"

@@ -6,32 +6,57 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #f5f5f5;
     padding: 10px 20px;
-    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
     font-size: 20px;
     font-weight: bold;
-    border-bottom: 1px solid #ddd;
+    margin: 0;
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
 }
 
 .container {
     padding: 20px;
 }
 
-.section-title {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #333;
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .logs-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
 }
 
 .log-card {
-    width: calc(10% - 20px);
+    width: calc(33.333% - 10px);
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -43,7 +68,6 @@ body {
 .log-card img {
     width: 100%;
     height: auto;
-    object-fit: cover;
 }
 
 .log-card p {
@@ -52,27 +76,76 @@ body {
     color: #555;
 }
 
-.bottom-nav {
+.modal {
+    display: none;
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
-    right: 0;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.bottom-nav button {
-    background: none;
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 0 0 20px;
+    font-size: 18px;
+}
+
+.modal-content input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.modal-content li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    font-size: 14px;
     border: none;
-    font-size: 16px;
-    color: #333;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.bottom-nav button:focus {
-    outline: none;
-    color: #007bff;
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
 }

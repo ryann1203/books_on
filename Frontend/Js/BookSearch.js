@@ -14,6 +14,8 @@ function displayTokens() {
 
 // 선택한 책 정보를 로컬스토리지에 저장
 async function selectBook(book) {
+    console.log('Selected Book:', book); // 선택된 책 정보 확인
+    
     localStorage.setItem('bookId', book.isbn);
     localStorage.setItem('bookTitle', book.title);
     localStorage.setItem('bookAuthor', book.authors.join(', '));

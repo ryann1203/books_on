@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그룹 도서 검색</title>
+    <link rel="stylesheet" href="../css/GroupBooks.css">
+</head>
+<body>
+    <div class="header">
+        <h1 id="group-name"></h1>
+    </div>
+    <div class="container">
+        <div class="section-title">그룹 멤버</div>
+        <ul id="friend-list"></ul>
+        <div class="section-title">도서 검색</div>
+        <input type="text" id="bookQuery" placeholder="도서명을 입력하세요">
+        <button id="search-books-button" onclick="searchBooks()">검색</button>
+        <div id="result" class="result-container"></div>
+    </div>
+    <script src="../Js/GroupBooks.js"></script>
+</body>
+</html>

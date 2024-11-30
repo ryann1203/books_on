@@ -7,18 +7,44 @@
     <link rel="stylesheet" href="../css/MyPage.css">
 </head>
 <body>
-    <div class="header">
-        <h1>나의 독서기록장</h1>
-    </div>
+    <header>
+        <h1>독서모임</h1>
+        <button id="logout-button">로그아웃</button>
+    </header>
+    <main>
+        <button id="create-group-button">그룹 생성</button>
+        <section class="container">
+            <div class="section-title">나의 독서기록장</div>
+            <div id="logs-container">
+                <!-- 독서 기록들이 동적으로 추가됩니다 -->
+            </div>
+        </section>
+        <section class="container">
+            <div class="section-title">참여한 독서모임의 책</div>
+            <div id="group-books-container">
+                <!-- 독서모임 책들이 동적으로 추가됩니다 -->
+            </div>
+        </section>
+    </main>
 
-    <div class="container">
-        <div class="section-title">나의 독서기록장</div>
-        <div class="logs-container" id="logs-container">
-            <!-- 독서 기록들이 여기에 동적으로 추가됩니다 -->
+    <!-- Invite Modal 추가 -->
+    <div id="invite-modal" class="modal">
+        <div class="modal-content">
+            <h2>그룹 생성 및 친구 초대</h2>
+            <label for="group-name">그룹명</label>
+            <input type="text" id="group-name" placeholder="그룹명을 입력하세요">
+            <label for="friend-search">친구 검색</label>
+            <input type="text" id="friend-search" placeholder="친구의 아이디를 입력하세요">
+            <button id="search-friend-button">검색</button>
+            <ul id="friend-list"></ul>
+            <h3>초대된 친구</h3>
+            <ul id="invited-friends"></ul>
+            <button id="join-group-button">그룹 생성</button>
+            <button id="close-modal">닫기</button>
         </div>
     </div>
 
     <script src="../Js/MyPage.js"></script>
-    <script src="../Js/navbar.js"></script>
+    <script src="../Js/InviteModal.js"></script>
 </body>
 </html>

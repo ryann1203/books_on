@@ -24,6 +24,8 @@ urlpatterns = [
     path('api/rest_auth/', include('dj_rest_auth.urls')),
     path('api/rest_auth/register/', include('dj_rest_auth.registration.urls')),
     path('api/Readinglog/', include('Readinglog.urls')),
+    path('api/accounts/', include('accounts.urls')),  # accounts 앱 연결
+    path('api/groups/', include('Groups.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

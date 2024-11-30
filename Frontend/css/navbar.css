@@ -7,18 +7,23 @@
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    align-items: center;
+    padding: 15px 0; /* 높이 증가 */
     z-index: 1000;
+    font-size: 18px; /* 폰트 크기 증가 */
 }
 
 .bottom-nav button {
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: 18px; /* 버튼 텍스트 크기 증가 */
     color: #333;
     cursor: pointer;
+    padding: 10px 20px; /* 버튼 간격 조정 */
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
 }
 
 .bottom-nav button:hover {
     color: #007bff;
+    background-color: #f1f1f1; /* 버튼에 배경색 추가 */
 }

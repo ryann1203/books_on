@@ -5,7 +5,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
 from .models import Book, ReadingLog
+from Groups.models import GroupMember
 from .serializers import BookSerializer, ReadingLogSerializer
 
 KAKAO_API_KEY = my_settings.KAKAO_API_KEY
@@ -76,6 +78,58 @@ class MyReadingLogsView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        logs = ReadingLog.objects.filter(user=request.user).select_related('book')
-        serializer = ReadingLogSerializer(logs, many=True)
-        return Response(serializer.data)
+        # 사용자 독서기록
+        reading_logs = ReadingLog.objects.filter(user=request.user).select_related('book')
+        logs_data = [
+            {
+                "id": log.id,
+                "book": {
+                    "title": log.book.title,
+                    "thumbnail": log.book.thumbnail,
+                }
+            } for log in reading_logs
+        ]
+
+        # 사용자가 참여한 독서모임의 책들
+        group_memberships = GroupMember.objects.filter(user=request.user).select_related('group')
+        groups = [membership.group for membership in group_memberships]
+        print("User's groups:", groups)
+
+        group_books = [
+            {
+                "group_id": group.id,  # Group ID 추가
+                "group_name": group.name,
+                "book": {
+                    "title": group.books.first().title if group.books.exists() else None,
+                    "thumbnail": group.books.first().thumbnail if group.books.exists() else None,
+                }
+            } for group in groups
+        ]
+
+        return Response({
+            "logs": logs_data,
+            "group_books": group_books,
+        }, status=200)
+    
+class ReadingLogDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, log_id):
+        try:
+            # 특정 독서기록 가져오기
+            reading_log = ReadingLog.objects.get(id=log_id, user=request.user)
+            serializer = ReadingLogSerializer(reading_log)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except ReadingLog.DoesNotExist:
+            return Response({"error": "Reading log not found."}, status=status.HTTP_404_NOT_FOUND)
+        
+    def patch(self, request, log_id):
+        try:
+            reading_log = ReadingLog.objects.get(id=log_id, user=request.user)
+            serializer = ReadingLogSerializer(reading_log, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ReadingLog.DoesNotExist:
+            return Response({"error": "Reading log not found."}, status=status.HTTP_404_NOT_FOUND)

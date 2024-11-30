@@ -3,6 +3,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
 
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
+    const nickname = document.getElementById('nickname').value;
     const password1 = document.getElementById('password1').value;
     const password2 = document.getElementById('password2').value;
 
@@ -12,10 +13,11 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/rest_auth/register/', {
+        const response = await fetch('http://127.0.0.1:8000/api/accounts/register/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password1, password2 }),
+            body: JSON.stringify({ 
+                username, email, first_name: nickname, password: password1  }),
         });
 
         if (response.ok) {
