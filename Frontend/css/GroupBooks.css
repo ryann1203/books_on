@@ -7,61 +7,114 @@ body {
 
 .header {
     background-color: #f5f5f5;
-    padding: 15px;
+    padding: 10px 20px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
 }
 
-.search-container {
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* 검색 영역 간격 */
+}
+
+.search-bar input {
+    width: 70%;
     padding: 15px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .search-container input {
-    width: calc(100% - 90px);
-    padding: 10px;
-    font-size: 14px;
+    width: 80%;
+    padding: 15px 20px;
+    font-size: 18px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 .search-container button {
-    padding: 10px 15px;
-    font-size: 14px;
-    color: white;
-    background-color: #007bff;
+    padding: 15px 20px;
+    font-size: 20px;
+    margin-left: 10px;
     border: none;
+    background-color: #007bff;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
 .result-container {
-    padding: 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 15px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* 여러 책을 정렬 */
+    gap: 20px; /* 카드 간격 */
+    justify-content: center; /* 가운데 정렬 */
 }
 
 .book-card {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    padding: 20px;
+    width: 300px; /* 카드 너비 */
     text-align: center;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Hover 시 강조 */
 }
 
 .book-card img {
-    width: 100%;
-    height: auto;
+    width: 120px; /* 이미지 크기 조정 */
+    height: 180px; /* 이미지 고정 높이 */
+    object-fit: cover;
+    border-radius: 5px;
     margin-bottom: 10px;
 }
 
 .book-card h3 {
-    font-size: 16px;
-    margin: 5px 0;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .book-card p {
@@ -71,44 +124,50 @@ body {
 }
 
 .book-card button {
-    padding: 5px 10px;
+    margin-top: 10px;
+    padding: 10px 15px;
     font-size: 14px;
+    background-color: #007bff; /* 파란색 버튼 */
     color: white;
-    background-color: #28a745;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%; /* 버튼 너비 */
 }
 
-.book-card {
+.book-card button:hover {
+    background-color: #0056b3;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0px; /* 바닥에서 0px */
+    left: 10px;
+    right: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 80px; /* 높이 증가 */
+    border-radius: 10px; /* 둥근 모서리 추가 */
+    padding: 10px 0; 
+    font-size: 23px; /* 폰트 크기 증가 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    z-index: 1000;
 }
 
-.book-thumbnail {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.select-book-button {
-    padding: 5px 10px;
-    background: #007bff;
-    color: #fff;
+.bottom-nav button {
+    background: none;
     border: none;
-    border-radius: 3px;
+    font-size: 18px; /* 버튼 텍스트 크기 증가 */
+    color: #333;
     cursor: pointer;
-    font-size: 14px;
+    padding: 10px 20px; /* 버튼 간격 조정 */
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
 }
 
-.select-book-button:hover {
-    background: #0056b3;
+.bottom-nav button:hover {
+    color: #007bff;
+    background-color: #f1f1f1; /* 버튼에 배경색 추가 */
 }
-

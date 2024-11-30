@@ -22,16 +22,16 @@ body {
 }
 
 .search-container input {
-    width: 70%;
-    padding: 10px;
-    font-size: 16px;
+    width: 80%;
+    padding: 15px 20px;
+    font-size: 18px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 .search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 20px;
+    font-size: 20px;
     margin-left: 10px;
     border: none;
     background-color: #007bff;
@@ -46,30 +46,92 @@ body {
 
 .result-container {
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* 여러 책을 정렬 */
+    gap: 20px; /* 카드 간격 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+.book-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    padding: 20px;
+    width: 300px; /* 카드 너비 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+
+.book-card img {
+    width: 120px; /* 이미지 크기 조정 */
+    height: 180px; /* 이미지 고정 높이 */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.book-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.book-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.book-card button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* 버튼 너비 */
+}
+
+.book-card button:hover {
+    background-color: #0056b3;
 }
 
 .bottom-nav {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0px; /* 바닥에서 20px 띄움 */
+    left: 10px; /* 좌측에서 여백 */
+    right: 10px; /* 우측에서 여백 */
     background-color: #f8f9fa;
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    align-items: center;
+    height: 80px; /* 높이 증가 */
+    border-radius: 10px; /* 둥근 모서리 추가 */
+    padding: 10px 0; 
+    font-size: 23px; /* 폰트 크기 증가 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
     z-index: 1000;
 }
 
 .bottom-nav button {
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: 18px; /* 버튼 텍스트 크기 증가 */
     color: #333;
     cursor: pointer;
+    padding: 10px 20px; /* 버튼 간격 조정 */
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
 }
 
 .bottom-nav button:hover {
     color: #007bff;
+    background-color: #f1f1f1; /* 버튼에 배경색 추가 */
 }
 

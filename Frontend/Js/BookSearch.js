@@ -65,16 +65,16 @@ async function searchBooks() {
 
         if (books.length > 0) {
             books.forEach((book, index) => {
-                const bookInfo = `
-                    <div>
-                        <h3>${book.title}</h3>
-                        <p>저자: ${book.authors.join(', ')}</p>
-                        <p>출판사: ${book.publisher}</p>
-                        <img src="${book.thumbnail}" alt="${book.title}" style="width:100px; height:auto;" />
-                        <button onclick='selectBook(${JSON.stringify(book)})'>독서기록 작성</button>
-                    </div>
-                `;
-                resultDiv.innerHTML += bookInfo;
+                const bookCard = `
+            <div class="book-card">
+                <img src="${book.thumbnail}" alt="${book.title}">
+                <h3>${book.title}</h3>
+                <p>저자: ${book.authors.join(', ')}</p>
+                <p>출판사: ${book.publisher}</p>
+                <button onclick='selectBook(${JSON.stringify(book)})'>독서기록 작성</button>
+            </div>
+        `;
+        resultDiv.innerHTML += bookCard;
             });
         } else {
             resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
