@@ -7,7 +7,7 @@ class Group(models.Model):
     name = models.CharField(max_length=255)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_groups') #생성자
     created_at = models.DateTimeField(auto_now_add=True)
-    books = models.ManyToManyField(Book, related_name='groups', blank=True)  # 그룹과 연결된 도서들
+    books = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='groups', blank=True, null=True)  # 그룹과 연결된 도서들
 
     def __str__(self):
         return self.name

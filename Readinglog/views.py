@@ -104,8 +104,8 @@ class MyReadingLogsView(APIView):
                 "group_id": group.id,  # Group ID 추가
                 "group_name": group.name,
                 "book": {
-                    "title": group.books.first().title if group.books.exists() else None,
-                    "thumbnail": group.books.first().thumbnail if group.books.exists() else None,
+                   "title": group.books.title if group.books else None,
+                   "thumbnail": group.books.thumbnail if group.books else None,
                 }
             } for group in groups
         ]

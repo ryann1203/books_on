@@ -64,11 +64,9 @@ class AddBookView(APIView):
             else:
                 print(f"Book '{book.title}' already exists.")
 
-            group.books.clear()  # 이전에 추가된 책 제거
-            group.books.add(book)  # 도서를 그룹에 추가
+            group.books = book  # ForeignKey 필드에 값을 직접 할당
             group.save()
 
-            print(f"Books in group '{group.name}':", group.books.all())  # 그룹의 책들 출력
 
             return Response({"message": f"Book '{book.title}' added to group '{group.name}'."}, status=status.HTTP_200_OK)
         except Group.DoesNotExist:
@@ -85,7 +83,7 @@ class GroupDetailView(APIView):
     def get(self, request, group_id):
         try:
             group = Group.objects.get(id=group_id)
-            book = group.books.first()  # 선택된 책 (하나만 저장되므로)
+            book = group.books  # ForeignKey로 연결된 단일 객체
             group_data = GroupSerializer(group).data
             book_data = BookSerializer(book).data if book else None
 
