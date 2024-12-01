@@ -1,5 +1,5 @@
 from django.db import transaction
-from .models import Group, GroupMember,Friend
+from .models import Group, GroupMember
 from django.contrib.auth.models import User
 
 class GroupService:
@@ -21,10 +21,6 @@ class GroupService:
                     # 중복 확인
                     if not GroupMember.objects.filter(group=group, user=user).exists():
                         GroupMember.objects.create(group=group, user=user)
-
-                    # 친구 관계 추가
-                    Friend.objects.get_or_create(adder=created_by, added_friend=user)
-                    Friend.objects.get_or_create(adder=user, added_friend=created_by)
                 
                 return group  # Group 객체 반환
         except Exception as e:

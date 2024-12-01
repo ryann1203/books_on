@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Book, ReadingLog
+from django.db import transaction
 from Groups.models import GroupMember
 from .serializers import BookSerializer, ReadingLogSerializer
 
@@ -38,8 +39,10 @@ class SaveReadingLogView(APIView):
     """
     permission_classes = [IsAuthenticated]
 
+    @transaction.atomic
     def post(self, request):
         # 요청에서 책 정보와 독서기록을 분리
+        isbn=request.data.get('isbn')
         title = request.data.get('title')  # 제목을 기준으로 처리
         authors = request.data.get('authors', [])
         diary = request.data.get('diary')
@@ -48,11 +51,12 @@ class SaveReadingLogView(APIView):
         thumbnail = request.data.get('thumbnail', '')
         contents = request.data.get('contents', '')
 
-        if not title or not diary:
+        if not isbn or not diary:
             return Response({'error': '책 제목과 독서기록이 모두 필요합니다.'}, status=400)
 
         # 책 정보 DB 저장
         book, created = Book.objects.get_or_create(
+            isbn=isbn,   # ISBN을 주요 기준으로 사용
             title=title,
             authors=', '.join(authors),
             defaults={

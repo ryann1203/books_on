@@ -7,6 +7,7 @@ from .serializers import GroupCreateSerializer, GroupSerializer, PostSerializer
 from .models import Group, Post, GroupMember
 from Readinglog.models import Book
 from Readinglog.serializers import BookSerializer
+from django.db import transaction
 
 class CreateGroupView(APIView):
     permission_classes = [IsAuthenticated]
@@ -15,13 +16,18 @@ class CreateGroupView(APIView):
         print("Request Data:", request.data)  # 요청 데이터 확인
         serializer = GroupCreateSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            group = serializer.save()
+            try:
+                with transaction.atomic():  # 트랜잭션 블록
+                    group = serializer.save()
+                    # 요청 사용자를 GroupMember로 추가
+                    GroupMember.objects.create(group=group, user=request.user)
 
-            # 요청 사용자를 GroupMember로 추가
-            GroupMember.objects.create(group=group, user=request.user)
-            group_data = GroupSerializer(group).data
-            print("Created Group Data:", group_data)  # 직렬화된 그룹 데이터 확인
-            return Response(group_data, status=status.HTTP_201_CREATED)
+                    group_data = GroupSerializer(group).data
+                    print("Created Group Data:", group_data)  # 직렬화된 그룹 데이터 확인
+                    return Response(group_data, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                print("Error during group creation:", e)
+                return Response({"error": "Failed to create group."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         

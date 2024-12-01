@@ -27,6 +27,7 @@ async function saveReadingLog() {
         return;
     }
     const bookData = {
+        isbn: localStorage.getItem('bookId'), 
         title: localStorage.getItem('bookTitle'),
         authors: localStorage.getItem('bookAuthor') ? localStorage.getItem('bookAuthor').split(', ') : [],
         publisher: localStorage.getItem('bookPublisher'),

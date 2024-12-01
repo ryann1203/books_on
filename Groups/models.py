@@ -23,16 +23,6 @@ class GroupMember(models.Model):
     def __str__(self):
         return f"{self.group.name}의 멤버"
     
-class Friend(models.Model):
-    adder = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friends') #친구를 추가한 사람
-    added_friend = models.ForeignKey(User, on_delete=models.CASCADE, related_name='added_by') #추가된 친구
-    added_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        unique_together = ('adder', 'added_friend') #동일한 친구 관계 중복 방지
-
-    def __str__(self):
-        return f"{self.adder.username} -> {self.added_friend.first_name}"
     
 
 class Post(models.Model):

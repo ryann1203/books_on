@@ -5,8 +5,8 @@ function addNavigationBar() {
 
     const navBar = `
         <div class="bottom-nav">
-            <button onclick="navigateTo('myPage')">독서모임</button>
-            <button onclick="navigateTo('bookSearch')">책 검색</button>
+            <button onclick="navigateTo('myPage')">마이페이지</button>
+            <button onclick="navigateTo('bookSearch')">도서 검색</button>
         </div>
     `;
     document.body.insertAdjacentHTML('beforeend', navBar);
